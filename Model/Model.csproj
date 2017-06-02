@@ -40,7 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas.cs" />
+    <Compile Include="Msite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Province.cs" />
+    <Compile Include="ViewMode\TreeMsite.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

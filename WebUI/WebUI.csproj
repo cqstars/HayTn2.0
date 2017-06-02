@@ -43,6 +43,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LitJson, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>E:\工具小软件\litjson完美支持中文\LitJson.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -101,6 +105,7 @@
     <Content Include="fonts\iconfont.eot" />
     <Content Include="fonts\iconfont.ttf" />
     <Content Include="fonts\iconfont.woff" />
+    <Content Include="ashx\GetTreeMsite.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -136,9 +141,13 @@
     <Content Include="Scripts\msgProcess.js" />
     <Content Include="Scripts\mustache.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="template.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ashx\GetTreeMsite.ashx.cs">
+      <DependentUpon>GetTreeMsite.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -148,6 +157,10 @@
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{c7293d9d-a310-43c1-8a94-0d8c817007b2}</Project>
       <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{f229cdc5-a78e-484f-aede-00faa5b4dcbc}</Project>
+      <Name>Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{09d7ed1e-4fe5-4df8-b63c-733de07d10ab}</Project>

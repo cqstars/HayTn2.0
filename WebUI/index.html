@@ -104,22 +104,25 @@
     </nav>
     <!--navbar-->
     <section id="first">
-        <div class="alert alert-success" role="alert">测站总数：8个，在线：0个，离线：8个，在线率：0%
+        <div class="alert alert-success" role="alert">
+            测站总数：8个，在线：0个，离线：8个，在线率：0%
             <p class="pull-right">
                 <button type="button" class="btn btn-primary btn-xs">修改密码</button>
                 <button type="button" class="btn btn-default btn-xs">安全退出</button>
             </p>
         </div>
-        
+
     </section>
     <hr />
     <section id="scond">
         <div class="row">
             <div class="col-md-2">
-                <div class="panel panel-default">
+                <div class="panel panel-info">
                     <div class="panel-heading">测站列表</div>
                     <div class="panel-body">
-                       
+                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -131,7 +134,7 @@
                                 <label class="sr-only" for="exampleInputEmail3">测站名称：</label>
                                 <input type="text" class="form-control" id="exampleInputEmail3" placeholder="输入测站名称">
                             </div>
-                         
+
                             <button type="submit" class="btn btn-default">搜寻</button>
                         </form>
                     </div>
@@ -143,14 +146,16 @@
                                 <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">全部</a></li>
                                 <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">在线</a></li>
                                 <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">离线</a></li>
-                             </ul>
+                            </ul>
 
                             <!-- Tab panes -->
                             <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane active" id="home">...</div>
+                                <div role="tabpanel" class="tab-pane active" id="home">
+                                    <a onclick="Getdata('RW1')" class="list-group-item" >RW</a>
+                                </div>
                                 <div role="tabpanel" class="tab-pane" id="profile">...</div>
                                 <div role="tabpanel" class="tab-pane" id="messages">...</div>
-                                
+
                             </div>
 
                         </div>
@@ -214,16 +219,7 @@
             </div>
         </div>
     </section>
-    <script type="text/javascript">
 
-        $(function ($) {
-            $.ajax({
-                type: "GET",
-                url: "test.js",
-                dataType: "script"
-            });
-        });
-    </script>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins)版本：3.1.1 -->
     <script src="Scripts/jquery-3.1.1.min.js"></script>
@@ -233,7 +229,7 @@
     <!--<script src="js/jquery.singlePageNav.min.js"></script>
     <script src="js/wow.min.js"></script>-->
     <script src="//at.alicdn.com/t/font_ye7xby0roa1w0zfr.js"></script>
-
+    <script src="Scripts/mustache.js"></script>
     <script type="text/javascript">
 
         $(function () {
@@ -250,6 +246,59 @@
 
 
         })
+    </script>
+    <script type="text/javascript">
+
+        $(function ($) {
+           
+            $.ajax({
+                type: "POST",
+                url: "/ashx/GetTreeMsite.ashx",
+                data: "name=John&location=Boston",
+                success: function (msg) {
+                    data = $.parseJSON(msg);
+                   // alert("Data Saved: " + data);
+                    //console.log(data);
+                    var itemTmpl = $('#tmpl1').html();
+                    var res = [];
+                    $.each(data.info, function (i, item) {
+                        res.push(Mustache.to_html(itemTmpl, item));
+                    });
+                    $("#accordion").html(res);
+                }
+            });
+        });
+    </script>
+
+
+    <script id="tmpl1" type="text-x-mustache-tmpl">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse{{AreasName}}" aria-expanded="false" aria-controls="collapse{{AreasName}}">
+                        {{AreasName}}
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse{{AreasName}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{AreasName}}">
+                <div class="panel-body">
+                    <div class="list-group">
+                        {{#Mistes}}
+                        <a href="javascript:;" onclick="Getdata('{{MsiteTable}}')" class="list-group-item" title="{{MsiteName}}">{{MsiteName}}</a>
+                        {{/Mistes}}
+                                                
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </script>
+    <script type="text/javascript">
+        function Getdata(D)
+        {
+            alert(D);
+        }
     </script>
 </body>
 </html>

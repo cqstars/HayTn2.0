@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,13 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas.cs" />
+    <Compile Include="Msite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlHelper.cs" />
+    <Compile Include="TreeMsite.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DBUtility\DBUtility.csproj">
-      <Project>{63afd33c-5a6f-47b8-8335-c24b50fd479b}</Project>
-      <Name>DBUtility</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{09d7ed1e-4fe5-4df8-b63c-733de07d10ab}</Project>
       <Name>Model</Name>

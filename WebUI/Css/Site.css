@@ -68,7 +68,13 @@ a {
         padding-left: 5px;
         padding-right: 5px;
     }
-    
+ 
+    #scond .col-md-2 .panel-body {
+    padding:1px;
+    }
+ #scond .col-md-2 .panel-group{
+     margin-bottom:1px;
+ }
 /*第一屏小米浏览器兼容*/
 /*覆盖navbar-default样式*/
 .navbar-default{
