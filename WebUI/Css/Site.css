@@ -82,6 +82,9 @@ a {
     border: none;
     box-shadow: 0px 2px 8px 0px rgba(50,50,50,0.25);
 }
+    .navbar-default .icon {
+    color:#ffffff;
+    }
 .navbar-default .navbar-brand {
     font-size: 16px;
     
@@ -230,11 +233,12 @@ a {
     -webkit-text-stroke-width: 0.2px;
     
 }
+
 .icon {
        width: 1.5em; height: 1.5em;
        vertical-align: -0.15em;
        fill: currentColor;
-       color:#ffffff;
+      /* color:#ffffff;*/
        margin-right:3px;
        overflow: hidden;
     }

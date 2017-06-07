@@ -21,7 +21,7 @@ namespace Model
             set;
         }
 
-        public string ProviinceName
+        public string ProvinceName
         {
             get;
             set;

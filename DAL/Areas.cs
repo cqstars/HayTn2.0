@@ -34,9 +34,9 @@ namespace DAL
         ///为县级Areas和测站Msite提供树形数据
         /// </summary>
         /// <returns></returns>
-        public List<Model.ViewMode.TreeMsite> GetAreasTree()
+        public List<Model.ViewMode.TreeMsite> GetAreasTree(int ProvinceID)
         {
-            string str = "select * from Areas";
+            string str = "select * from Areas where ProvinceID=" + ProvinceID;
             DataTable dt = SqlHelper.ExecuteDataTable(str, CommandType.Text, null);
             List<Model.ViewMode.TreeMsite> Tree = new List<Model.ViewMode.TreeMsite>();
             foreach (DataRow dw in dt.Rows)

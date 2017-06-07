@@ -11,7 +11,7 @@ namespace DAL
     public class TreeMsite
     {
         /// <summary>
-        /// 遍历旅游一级分类及下面的二级分类
+        /// 县
         /// </summary>
         /// <returns></returns>
         public List<Model.ViewMode.TreeMsite> GetMsiteList()
@@ -27,18 +27,7 @@ namespace DAL
                     Model.ViewMode.TreeMsite AreasTree = new Model.ViewMode.TreeMsite();
                     AreasTree.AreaSID= dr.GetInt32(0);
                     AreasTree.AreasName = dr.GetString(1);
-                    //TourRouteClassName  TourRouteClassID
-                    
                     list.Add(AreasTree);
-                    //Model.Msite site = new Model.Msite();
-                    //site.MsiteID = dr.GetInt32(0);
-                    //site.MsiteName = dr.GetString(1);
-                    //site.AreasID = dr.GetInt32(2);
-                    //site.MsiteTable = dr.GetString(3);
-                    //MyTourClass.TourType = new Dal_TourType().GetTourType(dr.GetInt32(0));
-                    //MyTourClass.TourRouteClassName = dr.GetString(1);
-
-                    //list.Add(MyTourClass);
                     list.Add(AreasTree);
                 }
                 return list;
@@ -52,9 +41,5 @@ namespace DAL
         }
 
     }
-    /// <summary>
-    /// 根据传入的AreasID获取Msite实体对象集合
-    /// </summary>
-    /// <returns></returns>
-    
+   
 }

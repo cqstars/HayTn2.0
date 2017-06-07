@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="../Css/Tree.css" rel="stylesheet" />
+</head>
+<body>
+    <h1 class="title"><span class="close">全部收起/展开</span>省、地区、树形菜单</h1>
+    <div class="menu">
+
+    </div>
+    <script src="../Scripts/jquery-3.1.1.min.js"></script>
+    <script src="../Scripts/mustache.js"></script>
+    <script src="../Scripts/MustacheRenderTree.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                type: "POST",
+                url: "../ashx/GetTreeMsite.ashx",
+                data: "name=John&location=Boston",
+                success: function (msg) {
+                    data1 = JSON.parse(msg);//将json数据转对象
+                    var res = [];
+                    $.each(data1.info, function (i, item) {
+                        console.log(item);
+                        res.push(data2Html(item));
+                    });
+                    $(".menu").html(res);
+                  
+                }
+            });
+        });
+    </script>
+  
+    <script type="text/javascript">
+        $(document).on('click', '.l2', function () {
+            console.log($(this).next());
+          $(this).next(".sslist").animate({ height: 'toggle', opacity: 'toggle' }, "slow").siblings('.sslist').slideUp("slow");
+        });
+
+
+        $(document).on('click', '.l1', function () {
+            console.log($(this).next());
+            $(this).next(".slist").animate({ height: 'toggle', opacity: 'toggle' }, "slow").siblings('.slist').slideUp("slow");
+
+          //  $(this).next(".slist").animate({ height: 'toggle', opacity: 'toggle' }, "slow").siblings('.slist').slideUp("slow");
+        });
+        //$('.menu').on('click', '.l1', function () {
+        //    console.log($(this).next());
+        //   // $(this).next().on(.hide();
+        //    $(this).next(".slist").animate({ height: 'toggle', opacity: 'toggle' }, "slow").siblings('.slist').slideUp("slow");
+        //});
+        $(document).on('click', '.close', function () {
+            alert(this);
+            $(".menu").animate({ height: 'toggle', opacity: 'toggle' }, "slow");
+        });
+      
+    </script>
+    
+</body>
+</html>

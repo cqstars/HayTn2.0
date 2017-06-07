@@ -1,304 +1,213 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>海顿物联网管理系统</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="all">
-    <meta name="AUTHOR" content="HayTn">
-
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!--<link href="css/animate.css" rel="stylesheet" />-->
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="Scripts/html5shiv.min.js"></script>
-      <script src="Scripts/respond.min.js"></script>
-    <![endif]-->
-
-    <link href="Css/Site.css" rel="stylesheet" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="Css/Main.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.1.1.min.js"></script>
 </head>
 <body>
-    <!--navbar-->
-    <nav class="navbar navbar-default navbar-fixed-top">
-
-        <div class="container">
-            <!--小屏幕按钮logo-->
-            <div class="navbar-header">
-                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="javascript:void">
-                    <svg class="icon " style="vertical-align: -0.55em;color:#ffffff" aria-hidden="true">
-                        <use xlink:href="#icon-icon-test"></use>
-                    </svg>海顿物联网管理系统
-
-                </a>
-            </div>
-
-            <!--导航-->
-
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-
-                    <li>
-                        <a href="javascript:void" onFocus="this.blur()">
-                            <svg class="icon text-success" aria-hidden="true">
-                                <use xlink:href="#icon-icon107"></use>
-                            </svg>
-                            实时监测
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <svg class="icon text-success" aria-hidden="true">
-                                <use xlink:href="#icon-chaxun"></use>
-                            </svg>历史查询 <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <!--<li><a href="Wh701.html">WH-TH701 全自动胶囊分选机</a></li>
-                            <li><a href="CenterCondition.html">热泵驱动型溶液恒温恒湿中央空调系统</a></li>
-                            <li><a href="WH-SG40.html">WH-SG40高速高精全自动硬质空心胶囊生产线</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="viscosity.html">在线粘度检测仪</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="mould.html">高速高精胶囊生产线的配套模具</a></li>-->
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void" onFocus="this.blur()">
-                            <svg class="icon text-success" aria-hidden="true">
-                                <use xlink:href="#icon-bangongzidonghua"></use>
-                            </svg>图像管理
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void" onFocus="this.blur()">
-                            <svg class="icon text-success" aria-hidden="true">
-                                <use xlink:href="#icon-tongjifenxi"></use>
-                            </svg>统计分析
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <svg class="icon text-success" aria-hidden="true">
-                                <use xlink:href="#icon-houtaiguanli"></use>
-                            </svg>系统设置
-                        </a>
-                        <ul class="dropdown-menu">
-                            <!--<li><a href="index.html">中文</a></li>
-                            <li><a href="index_en.html">English</a></li>-->
-
-                        </ul>
-                    </li>
-
-                </ul>
-            </div>
+    <div class="head clearfix">
+        <div class="headlogo left">
+            <h5>
+                <img src="../Images/logo/Title_Logo.png" />
+            </h5>
         </div>
-    </nav>
-    <!--navbar-->
-    <section id="first">
-        <div class="alert alert-success" role="alert">
-            测站总数：8个，在线：0个，离线：8个，在线率：0%
-            <p class="pull-right">
-                <button type="button" class="btn btn-primary btn-xs">修改密码</button>
-                <button type="button" class="btn btn-default btn-xs">安全退出</button>
-            </p>
-        </div>
+        <ul class="left headnav" id="headnav">
+            <li id="menu_0" class="current-menu">
+                <a href="#">测站监测</a>
+            </li>
+            <li id="menu_1">
+                <a href="#">地图展示</a>
+            </li>
+            <li id="menu_2">
+                <a href="#">系统设置</a>
+            </li>
+            <li id="menu_3">
+                <a href="#">历史数据</a>
+            </li>
+        </ul>
+        <ul class="headlink right clearfix">
+            <li id="link_0">
+                <a href="#">&nbsp;&nbsp;你好，admin</a>
+            </li>
+            <li id="link_1">
+                <a href="#">隐藏菜单</a>
+            </li>
+            <li id="link_2">
+                <a href="#">首页</a>
+            </li>
+            <li id="link_3">
+                <a href="#">帮助</a>
+            </li>
+            <li id="link_4">
+                <a href="#">退出</a>
+            </li>
+        </ul>
+    </div><!--end head-->
 
-    </section>
-    <hr />
-    <section id="scond">
-        <div class="row">
-            <div class="col-md-2">
-                <div class="panel panel-info">
-                    <div class="panel-heading">测站列表</div>
-                    <div class="panel-body">
-                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="leftmenu" id="leftmenu">
+        <div id="leftmenu_0" class="leftmenu-item">
+            <dl>
+                <dt>
+                    铜梁区
+                </dt>
+                <dd>
+                    <ul class="clearfix">
+                        <li><a href="javascript:;" _link="lanmuguanli.html">天元桥电站</a></li>
+                        <li><a href="javascript:;" _link="lanmuguanli.html">大庙宏伟电站</a></li>
+                        <li><a href="javascript:;" _link="lanmuguanli.html">石虎水力发电站</a></li>
+                        <li><a href="javascript:;" _link="lanmuguanli.html">洋海电站</a></li>
+                        <li><a href="javascript:;" _link="lanmuguanli.html">虎峰镇马堡电站</a></li>
+                        <li><a href="javascript:;" _link="lanmuguanli.html">陡洞子水电站</a></li>
+                    </ul>
+                </dd>
+            </dl>
+            <dl>
+                <dt>永川区</dt>
+                <dd>
+                    <ul class="clearfix">
+                        <li><a href="javascript:;" _link="lanmuguanli.html">上高洞电站</a></li>
+                        <li><a href="javascript:;" _link="lanmuguanli.html">下高洞电站</a></li>
+                        <li><a href="javascript:;" _link="lanmuguanli.html">付家滩电站</a></li>
+                        <li><a href="javascript:;" _link="lanmuguanli.html">长滩河电站</a></li>
+                        <li><a href="javascript:;" _link="lanmuguanli.html">祥华电站</a></li>
+                    </ul>
+                </dd>
+            </dl>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-10">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <label class="sr-only" for="exampleInputEmail3">测站名称：</label>
-                                <input type="text" class="form-control" id="exampleInputEmail3" placeholder="输入测站名称">
-                            </div>
-
-                            <button type="submit" class="btn btn-default">搜寻</button>
-                        </form>
-                    </div>
-                    <div class="panel-body">
-                        <div>
-
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">全部</a></li>
-                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">在线</a></li>
-                                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">离线</a></li>
-                            </ul>
-
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane active" id="home">
-                                    <a onclick="Getdata('RW1')" class="list-group-item" >RW</a>
-                                </div>
-                                <div role="tabpanel" class="tab-pane" id="profile">...</div>
-                                <div role="tabpanel" class="tab-pane" id="messages">...</div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-
-
-                </div>
-                <div class="col-md-6">
-                    <address>
-                        <svg class="icon text-danger" aria-hidden="true">
-                            <use xlink:href="#icon-diqiu"></use>
-                        </svg> <strong>重庆海顿科技有限公司 </strong><br>
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-shouji"></use>
-                        </svg>
-                        <abbr title="Phone">联系人：向先生&nbsp;&nbsp;手机：1363-7777-865</abbr><br>
-                        <svg class="icon text-primary" aria-hidden="true">
-                            <use xlink:href="#icon-dianhua"></use>
-                        </svg> 电话： 023-传真：023-<br />
-
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-youjian"></use>
-                        </svg><a href="mailto:#">20634529@qq.com</a><br />
-                        <svg class="icon text-success" aria-hidden="true">
-                            <use xlink:href="#icon-dizhi"></use>
-                        </svg>重庆市九龙坡区石桥铺华宇名都29号楼
-                    </address>
-
-
-                </div>
-                <div class="col-md-6">
-                    <!--底部导航-->
-                    <div class="row text-center">
-                        <ul class="list-inline">
-
-
-                            <!--<li><a href="javascript{void(0)}"><i class="iconfont text-info">&#xe610;</i></a></li>
-                            <li><a href="javascript{void(0)}"><i class="iconfont text-danger">&#xe611;</i></a></li>
-                            <li><a href="javascript{void(0)}"><i class="iconfont text-primary">&#xe60f;</i></a></li>-->
-                            <li></li>
-                        </ul>
-
-
-                        <p>Copyright©&nbsp;&nbsp;All Rights Reserved&nbsp;&nbsp;<a href="http://www.cqgdbg.com/">海顿科技</a></p>
-                        <p>渝ICP备12002506号-5</p>
-                        <!--<a href="javascript{void(0)}"></a>-->
-                    </div>
-                    <!--底部导航-->
-
-
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins)版本：3.1.1 -->
-    <script src="Scripts/jquery-3.1.1.min.js"></script>
-    <!--<script src="js/jquery.min.js"></script>-->
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="Scripts/bootstrap.min.js"></script>
-    <!--<script src="js/jquery.singlePageNav.min.js"></script>
-    <script src="js/wow.min.js"></script>-->
-    <script src="//at.alicdn.com/t/font_ye7xby0roa1w0zfr.js"></script>
-    <script src="Scripts/mustache.js"></script>
-    <script type="text/javascript">
-
-        $(function () {
-            ///*导航跳转效果插件*/
-            //$('.nav').singlePageNav({
-            //    offset: 70
-            //});
-            /*小屏幕导航点击关闭菜单*/
-            $('.navbar-collapse a').click(function () {
-
-                if (!($(this).hasClass("dropdown-toggle"))) { $('.navbar-collapse').collapse('hide'); }
-
-            });
-
-
-        })
-    </script>
-    <script type="text/javascript">
-
-        $(function ($) {
            
-            $.ajax({
-                type: "POST",
-                url: "/ashx/GetTreeMsite.ashx",
-                data: "name=John&location=Boston",
-                success: function (msg) {
-                    data = $.parseJSON(msg);
-                   // alert("Data Saved: " + data);
-                    //console.log(data);
-                    var itemTmpl = $('#tmpl1').html();
-                    var res = [];
-                    $.each(data.info, function (i, item) {
-                        res.push(Mustache.to_html(itemTmpl, item));
-                    });
-                    $("#accordion").html(res);
-                }
-            });
-        });
-    </script>
+        </div><!--end leftmenu_0-->
+        <div id="leftmenu_1" class="leftmenu-item" style="display:none;">
+            <dl>
+                <dt>铜梁区地图</dt>
+                <dd>
+                    <ul class="clearfix">
+                        <li><a href="javascript:;" _link="lanmuguanli.html">天元桥电站</a></li>
+                        <li><a href="javascript:;" _link="lanmuguanli.html">大庙宏伟电站</a></li>
+                        <li><a href="javascript:;" _link="lanmuguanli.html">石虎水力发电站</a></li>
+                        <li><a href="javascript:;" _link="lanmuguanli.html">洋海电站</a></li>
+                        <li><a href="javascript:;" _link="lanmuguanli.html">虎峰镇马堡电站</a></li>
+                        <li><a href="javascript:;" _link="lanmuguanli.html">陡洞子水电站</a></li>
+                    </ul>
+                </dd>
+            </dl>
+            <dl>
+                <dt>永川区地图</dt>
+                <dd>
+                    <ul class="clearfix">
+                        <li><a href="javascript:;" _link="lanmuguanli.html">上高洞电站</a></li>
+                        <li><a href="javascript:;" _link="lanmuguanli.html">下高洞电站</a></li>
+                        <li><a href="javascript:;" _link="lanmuguanli.html">付家滩电站</a></li>
+                        <li><a href="javascript:;" _link="lanmuguanli.html">长滩河电站</a></li>
+                        <li><a href="javascript:;" _link="lanmuguanli.html">祥华电站</a></li>
+                    </ul>
+                </dd>
+            </dl>
+        </div><!--end leftmenu_1-->
+        <div id="leftmenu_2" class="leftmenu-item" style="display:none;">
+            <dl>
+                <dt>系统设置</dt>
+                <dd>
+                    <ul class="clearfix">
+                        <li><a href="javascript:;" _link="wangzhanshezhi.html">网站设置</a></li>
+                        <li><a href="javascript:;">伪静态|缓存设置</a></li>
+                        <li><a href="javascript:;">在线客服设置</a></li>
+                        <li><a href="javascript:;">清除系统缓存</a></li>
+                    </ul>
+                </dd>
+            </dl>
+            <dl>
+                <dt>历史数据</dt>
+                <dd>
+                    <ul class="clearfix">
+                        <li><a href="javascript:;">一站更新全站</a></li>
+                        <li><a href="javascript:;">更新首页</a></li>
+                        <li><a href="javascript:;">更新栏目</a></li>
+                        <li><a href="javascript:;">更新文档</a></li>
+                        <li><a href="javascript:;">更新专题</a></li>
+                    </ul>
+                </dd>
+            </dl>
+            <dl>
+                <dt>会员管理</dt>
+                <dd>
+                    <ul class="clearfix">
+                        <li><a href="javascript:;">会员管理</a></li>
+                        <li><a href="javascript:;">会员组管理</a></li>
+                    </ul>
+                </dd>
+            </dl>
+            <dl>
+                <dt>管理员管理</dt>
+                <dd>
+                    <ul class="clearfix">
+                        <li><a href="javascript:;">系统用户管理</a></li>
+                        <li><a href="javascript:;">用户组管理</a></li>
+                        <li><a href="javascript:;">节点列表</a></li>
+                    </ul>
+                </dd>
+            </dl>
+        </div><!--end leftmenu_2-->
+        <div id="leftmenu_3" class="leftmenu-item" style="display:none;">
+            <dl>
+                <dt>扩展管理</dt>
+                <dd>
+                    <ul class="clearfix">
+                        <li><a href="javascript:;">模型管理</a></li>
+                        <li><a href="javascript:;">菜单管理</a></li>
+                        <li><a href="javascript:;">数据库管理</a></li>
+                        <li><a href="javascript:;">联动管理</a></li>
+                        <li><a href="javascript:;">区域管理</a></li>
+                        <li><a href="javascript:;">数据元管理</a></li>
+                        <li><a href="javascript:;">已传文件管理</a></li>
+                    </ul>
+                </dd>
+            </dl>
+            <dl>
+                <dt>我的账户</dt>
+                <dd>
+                    <ul class="clearfix">
+                        <li><a href="javascript:;">修改我的信息</a></li>
+                        <li><a href="javascript:;">修改密码</a></li>
+                    </ul>
+                </dd>
+            </dl>
+        </div><!--end leftmenu_3-->
 
-
-    <script id="tmpl1" type="text-x-mustache-tmpl">
-        <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingOne">
-                <h4 class="panel-title">
-                    <a role="button" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse{{AreasName}}" aria-expanded="false" aria-controls="collapse{{AreasName}}">
-                        {{AreasName}}
-                    </a>
-                </h4>
-            </div>
-            <div id="collapse{{AreasName}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{AreasName}}">
-                <div class="panel-body">
-                    <div class="list-group">
-                        {{#Mistes}}
-                        <a href="javascript:;" onclick="Getdata('{{MsiteTable}}')" class="list-group-item" title="{{MsiteName}}">{{MsiteName}}</a>
-                        {{/Mistes}}
-                                                
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-    </script>
+    </div>
+   
     <script type="text/javascript">
-        function Getdata(D)
-        {
-            alert(D);
-        }
+    $(function () {
+        $("#headnav li").click(function () {
+            var _id = $(this).index();
+            $(this).addClass("current-menu").siblings().removeClass("current-menu");
+            $('#leftmenu').find('.leftmenu-item').eq(_id).css('display', 'block').siblings('.leftmenu-item').css('display', 'none');
+        })
+        //关闭显示左侧菜单
+        $('#link_1').click(function () {
+            if (false == $('#leftmenu').is(':visible')) {
+                $('#leftmenu').css('display', 'block');
+                $(this).children('a').text('隐藏菜单');
+                $('body').addClass('showleftmenu').removeClass('hideleftmenu')
+            } else {
+                $('#leftmenu').css('display', 'none');
+                $(this).children('a').text('显示菜单');
+                $('body').addClass('hideleftmenu').removeClass('showleftmenu')
+            }
+        });
+        $("#leftmenu dl dt").click(function () {
+            if (false == $(this).siblings("dd").is(":visible"))
+            {
+                $(this).css("background-position", "right 12px");
+            }
+            else {
+                $(this).css("background-position", "right -40px");
+            }
+            $(this).siblings("dd").slideToggle("fast");
+        })
+    });
     </script>
 </body>
 </html>
