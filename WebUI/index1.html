@@ -305,13 +305,14 @@
                 </h4>
             </div>
             <div id="collapse{{AreasName}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{AreasName}}">
-                <div class="panel-body">
-                    <div class="list-group">
+                <div class="panel-body" style="padding:5px 5px 5px 50px">
+                    
                         {{#Mistes}}
-                        <a href="javascript:;" onclick="Getdata('{{MsiteTable}}')" class="list-group-item" title="{{MsiteName}}">{{MsiteName}}</a>
+                        <!--<a href="javascript:;" onclick="Getdata('{{MsiteTable}}')" class="list-group-item" title="{{MsiteName}}">{{MsiteName}}</a>-->
+                    <button type="button"  onclick="Getdata('{{MsiteTable}}')" class="btn btn-default btn-sm btn-block">{{MsiteName}}</button>
                         {{/Mistes}}
                                                 
-                    </div>
+                    
                 </div>
             </div>
         </div>

@@ -98,9 +98,29 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin2\content.html" />
+    <Content Include="Admin2\content_post.html" />
+    <Content Include="Admin2\index.html" />
+    <Content Include="Admin2\ProvinceAdmin.html" />
+    <Content Include="bootstrap3-editable\css\bootstrap-editable.css" />
+    <Content Include="bootstrap3-editable\img\clear.png" />
+    <Content Include="bootstrap3-editable\img\loading.gif" />
+    <Content Include="bootstrap3-editable\js\bootstrap-editable.js" />
+    <Content Include="bootstrap3-editable\js\bootstrap-editable.min.js" />
+    <Content Include="Css\style.css" />
+    <Content Include="Images\bg\left_bg.jpg" />
+    <Content Include="Images\bg\tree.png" />
+    <Content Include="study.html" />
+    <Content Include="Admin2\tag.html" />
+    <Content Include="Admin2\uesr_search.html" />
+    <Content Include="Admin2\user_list.html" />
     <Content Include="Admin\AdminProvince.html" />
     <Content Include="Admin\lanmuguanli.html" />
     <Content Include="Admin\main.html" />
+    <Content Include="Css\bootstrap-maizi.css" />
+    <Content Include="Css\bootstrap.css" />
+    <Content Include="Css\bootstrap.min.css" />
+    <Content Include="Css\Button.css" />
     <Content Include="Css\Main.css" />
     <Content Include="Css\pageinit.css" />
     <Content Include="Css\Tree.css" />
@@ -117,6 +137,8 @@
     <Content Include="ashx\GetSiteListPage.ashx" />
     <Content Include="ashx\GetTotalPage.ashx" />
     <Content Include="ashx\GetTreeProvince.ashx" />
+    <Content Include="ashx\Province\AddProvince.ashx" />
+    <Content Include="ashx\Areas\AddAreas.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -128,8 +150,6 @@
     <Content Include="Admin\index.html" />
     <Content Include="Css\bootstrap-theme.css" />
     <Content Include="Css\bootstrap-theme.min.css" />
-    <Content Include="Css\bootstrap.css" />
-    <Content Include="Css\bootstrap.min.css" />
     <Content Include="Css\MyStyle.css" />
     <Content Include="Css\Site.css" />
     <Content Include="fonts\iconfont.svg" />
@@ -145,6 +165,7 @@
     <Content Include="index1.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\footer.js" />
     <Content Include="Scripts\html5shiv.min.js" />
     <Content Include="Scripts\iconfont.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -152,12 +173,16 @@
     <Content Include="Scripts\msgProcess.js" />
     <Content Include="Scripts\mustache.js" />
     <Content Include="Scripts\MustacheRenderTree.js" />
+    <Content Include="Scripts\Nav.js" />
     <Content Include="Scripts\pagination.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="template.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ashx\Areas\AddAreas.ashx.cs">
+      <DependentUpon>AddAreas.ashx</DependentUpon>
+    </Compile>
     <Compile Include="ashx\GetSiteListPage.ashx.cs">
       <DependentUpon>GetSiteListPage.ashx</DependentUpon>
     </Compile>
@@ -169,6 +194,9 @@
     </Compile>
     <Compile Include="ashx\GetTreeProvince.ashx.cs">
       <DependentUpon>GetTreeProvince.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ashx\Province\AddProvince.ashx.cs">
+      <DependentUpon>AddProvince.ashx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

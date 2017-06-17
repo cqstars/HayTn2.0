@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Data.SqlClient;
 namespace DAL
 {
     public class Province
@@ -22,6 +23,19 @@ namespace DAL
                 TreeProvince.Add(Province);
             }
             return TreeProvince;
+        }
+        /// <summary>
+        /// 增加一个省行政区域
+        /// </summary>
+        /// <returns></returns>
+        public int AddProvince(Model.Province Province)
+        {
+            string str = "insert into Province (ProvinceName) values(@ProvinceName)";
+            SqlParameter[] pms = new SqlParameter[] {
+                 new SqlParameter("@ProvinceName",Province.ProvinceName)
+            };
+            return SqlHelper.ExecuteNonQuery(str, System.Data.CommandType.Text, pms);
+
         }
     }
 }

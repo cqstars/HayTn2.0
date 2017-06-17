@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>行政区域划分管理</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+
+    <meta name="robots" content="all">
+    <meta name="AUTHOR" content="HayTn">
+
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="../css/animate.css" rel="stylesheet" />-->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="../Scripts/html5shiv.min.js"></script>
+      <script src="../Scripts/respond.min.js"></script>
+    <![endif]-->
+
+    <link href="../Css/Site.css" rel="stylesheet" />
+    <link href="../Css/style.css" rel="stylesheet" />
+    <link href="../bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" />
+    <style type="text/css">
+        .container {
+            width: 1154px !important;
+        }
+    </style>
+
+</head>
+<body>
+    <script src="../Scripts/Nav.js"></script>
+
+    <div id="first">
+        <!--Ajax Modal -->
+        <div class="modal fade" id="Ajaxloading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop='static'>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img src="../bootstrap3-editable/img/loading.gif" class="center-block" />
+                        <p class="text-center text-info">数据加载中......</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+
+
+        <div class="container" style="padding-top:50px;">
+            <button type="button" class="btn btn-danger" id="AddProvince" data-type="text" data-pk="1" data-url="../ashx/Province/AddProvince.ashx" data-title="输入省一级名字">增加省一级行政单位</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="tree well">
+
+        </div>
+    </div>
+    <div class="container">
+
+    </div>
+    <script src="../Scripts/footer.js"></script>
+    <script src="../Scripts/jquery-3.1.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/mustache.js"></script>
+    <script src="../Scripts/MustacheRenderTree.js"></script>
+    <script src="//at.alicdn.com/t/font_s6xpn5xgs124kj4i.js"></script>
+    <script src="../bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).on('click', '.tree ul li> span', function (e) {
+            var d = $(this).siblings('ul').is(":visible");
+            $(this).siblings('ul').slideToggle('fast');//.siblings('dt').css('background-position','right -40px');
+            if (d) {
+                $(this).find(">i").addClass('icon-minus-sign').removeClass('icon-plus-sign');
+                d = false;
+            } else {
+                $(this).find(">i").addClass('icon-plus-sign').removeClass('icon-minus-sign');
+                d = true;
+            }
+            e.stopPropagation()
+        });
+    </script>
+    <script type="text/javascript">
+        $.fn.editable.defaults.mode = 'popup';
+        $(document).ready(function () {
+            $('#AddProvince').editable({
+                display: false,
+                success: function () {
+                    $.ajax({
+                        type: "POST",
+                        url: "../ashx/GetTreeProvince.ashx",
+                        data: "name=John&location=Boston",
+                        beforeSend: function () {
+                            ShowDiv();
+                        },
+                        complete: function () {
+                            HiddenDiv();
+                        },
+
+                        success: function (msg) {
+                            data1 = JSON.parse(msg);//将json数据转对象
+                            var res = [];
+                            res.push(data2Html(data1));
+                            $(".tree").html(res);
+                        }
+                    });
+                }
+            });
+            $('.tree ').editable({
+                selector: '.AddAreas',
+                url: '/post',
+                pk: 1
+            });
+            $('.tree ').editable({
+                selector: '.AddMsite',
+                url: '/post',
+                pk: 1
+            });
+        });
+        showTree();
+        function showTree() {
+            $(function ($) {
+                $.ajax({
+                    type: "POST",
+                    url: "../ashx/GetTreeProvince.ashx",
+                    data: "name=John&location=Boston",
+                    beforeSend: function () {
+                        ShowDiv();
+                    },
+                    complete: function () {
+                        HiddenDiv();
+                    },
+
+                    success: function (msg) {
+                        data1 = JSON.parse(msg);//将json数据转对象
+                        var res = [];
+                        res.push(data2Html(data1));
+                        $(".tree").html(res);
+                    }
+                });
+            });
+
+        }
+       
+        //显示加载数据
+        function ShowDiv() {
+            $("#Ajaxloading").modal('show')
+        }
+        //隐藏加载数据
+        function HiddenDiv() {
+            $("#Ajaxloading").modal('hide');
+        }
+
+        $.fn.editable.defaults.mode = 'popup';
+        $(document).ready(function () {
+            $('#AddProvince').editable({
+                display: false
+            });
+            
+
+        });
+        function DeleteProince(e) {
+            alert(e);
+        }
+        function DeleteAreas(e) {
+            alert(e);
+        }
+        function DeleteMsite(e) {
+            alert(e)
+        }
+        function AddAreas(e) {
+            alert($(this));
+            alert(e);
+
+        }
+
+    </script>
+
+</body>
+</html>

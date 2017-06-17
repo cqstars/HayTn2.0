@@ -1,7 +1,11 @@
 ﻿body, button, input, select, textarea, h1, h2, h3, h4, h5, h6 {
     font-family: Microsoft YaHei,'宋体', Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
 }
-html{overflow-y:scroll;}
+
+html {
+    overflow-y: scroll;
+}
+
 p {
     text-indent: 2em;
 }
@@ -44,68 +48,76 @@ a {
 #first {
     /* height: 500px;
     background: #808080;*/
-    margin-top: 70px;
-  
+    margin-top: 75px;
+    padding: 10px 0px;
 }
 
-   
+
 
 #scond {
-    padding: 0px 10px;
+    padding: 0px 0px;
 }
 
     #scond img {
         margin: 0px auto;
     }
+
     #scond .row {
-    margin:0 10px ;
+        margin: 0 10px;
     }
- #scond .col-md-2{
+
+    #scond .col-md-2 {
         padding-left: 5px;
         padding-right: 5px;
     }
- #scond .col-md-10{
+
+    #scond .col-md-10 {
         padding-left: 5px;
         padding-right: 5px;
     }
- 
+
     #scond .col-md-2 .panel-body {
-    padding:1px;
+        padding: 1px;
     }
- #scond .col-md-2 .panel-group{
-     margin-bottom:1px;
- }
+
+    #scond .col-md-2 .panel-group {
+        margin-bottom: 1px;
+    }
 /*第一屏小米浏览器兼容*/
 /*覆盖navbar-default样式*/
-.navbar-default{
+.navbar-default {
     background-color: #8c6fc3;
     border: none;
     box-shadow: 0px 2px 8px 0px rgba(50,50,50,0.25);
 }
+
     .navbar-default .icon {
-    color:#ffffff;
+        color: #ffffff;
     }
-.navbar-default .navbar-brand {
-    font-size: 16px;
-    
-    color:#ffffff;
-    height: 70px;
-    line-height: 35px;
-}
-.navbar-default .navbar-nav>li>a {
-    font-size: 14px;
-   
-    color:#ffffff;
-    height: 70px;
-    line-height: 35px;
-}
-.navbar-toggle{
+
+    .navbar-default .navbar-brand {
+        font-size: 16px;
+        color: #ffffff;
+        height: 70px;
+        line-height: 35px;
+    }
+
+    .navbar-default .navbar-nav > li > a {
+        font-size: 14px;
+        color: #ffffff;
+        height: 70px;
+        line-height: 35px;
+    }
+
+.navbar-toggle {
     margin-top: 17px;
 }
+
 .navbar-default .navbar-toggle:hover {
     border-color: #40D2B1;
     background-color: rgb(69, 210, 184);
 }
+
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #1C9982;
 }
@@ -176,10 +188,8 @@ a {
 
 
 #footer {
-
     padding: 20px;
     border-top: 1px solid rgba(50,50,50,0.35);
-   
 }
 
     #footer p {
@@ -231,17 +241,17 @@ a {
     margin-right: 5px;
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
-    
 }
 
 .icon {
-       width: 1.5em; height: 1.5em;
-       vertical-align: -0.15em;
-       fill: currentColor;
-      /* color:#ffffff;*/
-       margin-right:3px;
-       overflow: hidden;
-    }
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    /* color:#ffffff;*/
+    margin-right: 3px;
+    overflow: hidden;
+}
 /*---------阿里字体图标-------------*/
 .pull-left {
     margin-right: 10px;
@@ -250,6 +260,46 @@ a {
 .pull-right {
     margin-left: 10px;
 }
+/*--------------------------------美化分页按钮----------------------------------------------------*/
+.pagination.square {
+    margin: 0; /* 去除外边距 */
+}
+
+    .pagination.square > li > a,
+    .pagination.square > li > span {
+        margin: 0 5px;
+        border: 1px solid #dddddd; /* 设置所有的边框都为1像素 */
+    }
+
+    .pagination.square > li:first-child > a,
+    .pagination.square > li:first-child > span,
+    .pagination.square > li:last-child > a,
+    .pagination.square > li:last-child > span {
+        margin-left: 0px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 0px; /* 取消圆角 */
+    }
+/*--------------------------------美化分页按钮----------------------------------------------------*/
+
+/***-----------------------------------Ajax效果------------------------------------------------*/
+/*#Ajaxloading {
+width:170px;
+height:25px;
+border:3px solid #C3DAF9;
+position:absolute;
+top:300px;
+left:600px; 
+z-index:10000; 
+background-color:#F7F9FC;
+line-height:25px;
+vertical-align:middle;
+font-size:11pt;
+display:none;
+}*/
+
+
+
 
 @media screen and (min-width: 1200px) {
     /*如果使用者之視窗寬度 >= 1200px，將會再載入這裡的 CSS。  */
@@ -263,18 +313,20 @@ a {
         padding-left: 0px;
     }
 }
+
 .well_L {
-  margin-top:100px;
-  background-image: -webkit-linear-gradient(top, #e8e8e8 0%, #f5f5f5 100%);
-  background-image:      -o-linear-gradient(top, #e8e8e8 0%, #f5f5f5 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#e8e8e8), to(#f5f5f5));
-  background-image:         linear-gradient(to bottom, #e8e8e8 0%, #f5f5f5 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe8e8e8', endColorstr='#fff5f5f5', GradientType=0);
-  background-repeat: repeat-x;
-  border-color: #dcdcdc;
-  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, .05), 0 1px 0 rgba(255, 255, 255, .1);
-          box-shadow: inset 0 1px 3px rgba(0, 0, 0, .05), 0 1px 0 rgba(255, 255, 255, .1);
+    margin-top: 100px;
+    background-image: -webkit-linear-gradient(top, #e8e8e8 0%, #f5f5f5 100%);
+    background-image: -o-linear-gradient(top, #e8e8e8 0%, #f5f5f5 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#e8e8e8), to(#f5f5f5));
+    background-image: linear-gradient(to bottom, #e8e8e8 0%, #f5f5f5 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe8e8e8', endColorstr='#fff5f5f5', GradientType=0);
+    background-repeat: repeat-x;
+    border-color: #dcdcdc;
+    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, .05), 0 1px 0 rgba(255, 255, 255, .1);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, .05), 0 1px 0 rgba(255, 255, 255, .1);
 }
+
 @media screen and (min-width: 768px) and (max-width: 979px) {
     /* 如果使用者之視窗寬度介於 768px ~ 979px，將會再載入這裡的 CSS。  */
     #right {

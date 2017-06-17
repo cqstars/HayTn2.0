@@ -5,11 +5,41 @@
     <title></title>
     <meta charset="utf-8" />
     <link href="../Css/Tree.css" rel="stylesheet" />
+    <link href="../Css/Button.css" rel="stylesheet" />
+
+    <style>
+        .pannel {
+            width: 300px;
+            border: 1px solid #000;
+            /*margin: 0px auto;*/
+            margin-bottom:5px;
+            padding: 10px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+            .pannel h1 {
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                height: 20px;
+                font-size: 12px;
+                background: #CC6600;
+                line-height: 20px;
+                text-indent: 5px;
+                padding:2px;
+                margin-top: 0px;
+            }
+    </style>
 </head>
 <body>
-    <h1 class="title"><span class="close">全部收起/展开</span>省、地区、树形菜单</h1>
+    <div class="pannel">
+        <h1>请输入增加省名称:</h1>
+        <p><input type="email" class="form-control" id="exampleInputEmail2" placeholder="请输入省行政名称">&nbsp;&nbsp; <button type="submit" class="button blue">确定</button></p>
+    </div>
+    <span class="close">全部收起/展开</span>
     <div class="menu">
-
     </div>
     <script src="../Scripts/jquery-3.1.1.min.js"></script>
     <script src="../Scripts/mustache.js"></script>
@@ -18,46 +48,38 @@
         $(function () {
             $.ajax({
                 type: "POST",
-                url: "../ashx/GetTreeMsite.ashx",
+                url: "../ashx/GetTreeProvince.ashx",
                 data: "name=John&location=Boston",
                 success: function (msg) {
                     data1 = JSON.parse(msg);//将json数据转对象
                     var res = [];
-                    $.each(data1.info, function (i, item) {
-                        console.log(item);
-                        res.push(data2Html(item));
-                    });
+                    res.push(data2Html(data1));
+                    //$.each(data1.info, function (i, item) {
+                    //    console.log(item);
+                    //    res.push(data2Html(item));
+                    //});
                     $(".menu").html(res);
-                  
+
                 }
             });
         });
     </script>
-  
+
     <script type="text/javascript">
         $(document).on('click', '.l2', function () {
             console.log($(this).next());
-          $(this).next(".sslist").animate({ height: 'toggle', opacity: 'toggle' }, "slow").siblings('.sslist').slideUp("slow");
+            $(this).next(".sslist").animate({ height: 'toggle', opacity: 'toggle' }, "slow").siblings('.sslist').slideUp("slow");
         });
-
-
         $(document).on('click', '.l1', function () {
             console.log($(this).next());
             $(this).next(".slist").animate({ height: 'toggle', opacity: 'toggle' }, "slow").siblings('.slist').slideUp("slow");
-
-          //  $(this).next(".slist").animate({ height: 'toggle', opacity: 'toggle' }, "slow").siblings('.slist').slideUp("slow");
         });
-        //$('.menu').on('click', '.l1', function () {
-        //    console.log($(this).next());
-        //   // $(this).next().on(.hide();
-        //    $(this).next(".slist").animate({ height: 'toggle', opacity: 'toggle' }, "slow").siblings('.slist').slideUp("slow");
-        //});
         $(document).on('click', '.close', function () {
-            alert(this);
+
             $(".menu").animate({ height: 'toggle', opacity: 'toggle' }, "slow");
         });
-      
+
     </script>
-    
+
 </body>
 </html>
