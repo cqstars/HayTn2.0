@@ -108,8 +108,10 @@
     <Content Include="bootstrap3-editable\js\bootstrap-editable.js" />
     <Content Include="bootstrap3-editable\js\bootstrap-editable.min.js" />
     <Content Include="Css\style.css" />
+    <Content Include="demo.html" />
     <Content Include="Images\bg\left_bg.jpg" />
     <Content Include="Images\bg\tree.png" />
+    <Content Include="Scripts\bootstrap-confirmation.min.js" />
     <Content Include="study.html" />
     <Content Include="Admin2\tag.html" />
     <Content Include="Admin2\uesr_search.html" />
@@ -139,6 +141,9 @@
     <Content Include="ashx\GetTreeProvince.ashx" />
     <Content Include="ashx\Province\AddProvince.ashx" />
     <Content Include="ashx\Areas\AddAreas.ashx" />
+    <Content Include="ashx\Province\DeleteProince.ashx" />
+    <Content Include="ashx\Areas\DeleteAreas.ashx" />
+    <Content Include="ashx\Msite\AddMsite.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -183,6 +188,9 @@
     <Compile Include="ashx\Areas\AddAreas.ashx.cs">
       <DependentUpon>AddAreas.ashx</DependentUpon>
     </Compile>
+    <Compile Include="ashx\Areas\DeleteAreas.ashx.cs">
+      <DependentUpon>DeleteAreas.ashx</DependentUpon>
+    </Compile>
     <Compile Include="ashx\GetSiteListPage.ashx.cs">
       <DependentUpon>GetSiteListPage.ashx</DependentUpon>
     </Compile>
@@ -195,8 +203,14 @@
     <Compile Include="ashx\GetTreeProvince.ashx.cs">
       <DependentUpon>GetTreeProvince.ashx</DependentUpon>
     </Compile>
+    <Compile Include="ashx\Msite\AddMsite.ashx.cs">
+      <DependentUpon>AddMsite.ashx</DependentUpon>
+    </Compile>
     <Compile Include="ashx\Province\AddProvince.ashx.cs">
       <DependentUpon>AddProvince.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ashx\Province\DeleteProince.ashx.cs">
+      <DependentUpon>DeleteProince.ashx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

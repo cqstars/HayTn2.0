@@ -14,7 +14,16 @@ namespace WebUI.ashx.Areas
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/plain";
-            context.Response.Write("Hello World");
+            Model.Areas NewAreas = new Model.Areas();
+            NewAreas.AreasName = context.Request["value"].ToString();
+            NewAreas.ProvinceID = Convert.ToInt32(context.Request["pk"]);
+            int ok = new BLL.Areas().AddAreas(NewAreas);
+            if (ok == 1)
+            {context.Response.Write(200);
+            }
+            else
+            { context.Response.Write(400); }
+            
         }
 
         public bool IsReusable

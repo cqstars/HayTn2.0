@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-
+using System.Data.SqlClient;
 namespace DAL
 {
     public class Areas
@@ -49,5 +49,46 @@ namespace DAL
             }
             return Tree;
         }
+        /// <summary>
+        /// 传入Areas对象，插入Areas表
+        /// </summary>
+        /// <param name="NewAreas"></param>
+        /// <returns></returns>
+        public int AddAreas(Model.Areas NewAreas)
+        {
+            string str = "insert into Areas(AreasName,ProvinceID) values(@AreasName,@ProvinceID)";
+            SqlParameter[] pms = new SqlParameter[] {
+                 new SqlParameter("@AreasName",NewAreas.AreasName),
+                 new SqlParameter("@ProvinceID",NewAreas.ProvinceID)
+            };
+            return SqlHelper.ExecuteNonQuery(str, System.Data.CommandType.Text, pms);
+        }
+        /// <summary>
+        /// 根据传入的AreaSID，删除Areas,但先查一下Msite表下面有没有测站，有不能删，返回400，删掉成功，返回200
+        /// </summary>
+        /// <param name="AreaSID"></param>
+        /// <returns></returns>
+        public int DeleteAreasByID(int AreaSID)
+        {
+            if (new Msite().GetMsiteByAreasId(AreaSID).Count != 0)
+            {
+                return 400;
+            }
+            else
+            {
+                string str = "delete from Areas where AreaSID=@AreaSID";
+                SqlParameter[] pms = new SqlParameter[] {
+                 new SqlParameter("@AreaSID",AreaSID)};
+                int ok = SqlHelper.ExecuteNonQuery(str, System.Data.CommandType.Text, pms);
+                if (ok == 1)
+                {
+                    return 200;
+                }
+                else
+                { return 400; }
+
+            }
+        }
+
     }
 }

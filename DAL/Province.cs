@@ -37,5 +37,31 @@ namespace DAL
             return SqlHelper.ExecuteNonQuery(str, System.Data.CommandType.Text, pms);
 
         }
+        /// <summary>
+        /// 根据传入省ID删除省，但首先检查省下面有无Areas数据
+        /// </summary>
+        /// <param name="ProvinceID"></param>
+        /// <returns></returns>
+        public int DeleteProinceByID(int ProvinceID)
+        {
+            if (new Areas().GetAreasByProvinceId(ProvinceID).Count!=0)
+            {
+                return 400;
+            }
+            else {
+                string str = "delete from Province where ProvinceID=@ProvinceID";
+                SqlParameter[] pms = new SqlParameter[] {
+                 new SqlParameter("@ProvinceID",ProvinceID)};
+               int ok= SqlHelper.ExecuteNonQuery(str, System.Data.CommandType.Text, pms);
+                if (ok == 1)
+                {
+                    return 200;
+                }
+                else
+                { return 400; }
+
+            }
+            
+        }
     }
 }

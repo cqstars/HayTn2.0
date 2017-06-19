@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Data.SqlClient;
 namespace DAL
 {
     public class Msite
@@ -71,6 +72,28 @@ namespace DAL
                 siteDataList.Add(MT);
             }
             return siteDataList;
+        }
+        /// <summary>
+        /// 增加一个测站
+        /// </summary>
+        /// <param name="NewMsite"></param>
+        /// <returns></returns>
+        public int AddMsite(Model.Msite NewMsite)
+        {
+            string str = "insert into Msite(MsiteName,AreasID) values(@MsiteName,@AreasID)";
+            SqlParameter[] pms = new SqlParameter[] {
+                 new SqlParameter("@MsiteName",NewMsite.MsiteName),
+                 new SqlParameter("@AreasID",NewMsite.AreasID)
+            };
+            int ok=SqlHelper.ExecuteNonQuery(str, System.Data.CommandType.Text, pms);
+            if (ok == 1)
+            {
+                return 200;
+            }
+            else
+            {
+                return 400;
+            }
         }
     }
 

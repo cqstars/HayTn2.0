@@ -37,13 +37,13 @@ var Old_AdminTree = [
 var _AdminTree = [
      
     '<ul>{{#Province}}<li><span><i class="icon-plus-sign"></i>{{ProvinceName}}</span>',
-    '<a href="javascript:;" onclick="DeleteProince({{ProvinceID}})"> <strong class="icon-Delete"></strong>删除</a>',
+    '<a href="{{ProvinceID}}" class="DeleteProince" data-title="真要删除{{ProvinceName}}吗？" data-content="{{ProvinceID}}" role="button"><strong class="icon-Delete"></strong>删除</a>',
     '<a href="javascript:;" class="AddAreas" data-pk="{{ProvinceID}}" data-url="../ashx/Areas/AddAreas.ashx" data-title="增加{{ProvinceName}}下区县">',
     '<strong class="icon-Add"></strong>增加{{ProvinceName}}下区县</a>',
     '<ul>',
                    '{{#TreeMsite}}<li><span><i class="icon-plus-sign"></i> {{AreasName}}</span>',
-                   ' <button type="button" class="btn btn-warning" " onclick="DeleteAreas({{AreaSID}})"><strong class="icon-Delete"></strong> 删除</button>',
-                  ' <button type="button" class="btn btn-danger AddMsite"><strong class="icon-Add"></strong>此区县下添加测站</button>',
+                   ' <button type="button" class="btn btn-warning"  onclick=DeleteAreas("{{AreaSID}}","{{AreasName}}")><strong class="icon-Delete"></strong> 删除{{AreasName}}</button>',
+                  ' <button type="button" class="btn btn-danger AddMsite" data-pk="{{AreaSID}}" data-url="../ashx/Msite/AddMsite.ashx"><strong class="icon-Add"></strong>此区县下添加测站</button>',
                     //'<a href="javascript:;" onclick="DeleteAreas({{AreaSID}})"> <strong class="icon-Delete"></strong>此区县下添加测站</a>',
                     '',
                    '<ul>',
@@ -59,6 +59,7 @@ var _AdminTree = [
                 //'})</script>'
 
 ].join('');
+
 //初始化这个模板
 Mustache.parse(_TreeProvice);
 Mustache.parse(_AdminTree);

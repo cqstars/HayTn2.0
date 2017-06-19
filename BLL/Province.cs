@@ -14,5 +14,14 @@ namespace BLL
             int ok=new DAL.Province().AddProvince(NewProvince);
             return 200;
         }
+        /// <summary>
+        /// 根据省ID删除 省
+        /// </summary>
+        /// <param name="ProvinceID"></param>
+        /// <returns></returns>
+        public int DeleteProinceByID(int ProvinceID)
+        {
+            return new DAL.Province().DeleteProinceByID(ProvinceID);
+        }
     }
 }

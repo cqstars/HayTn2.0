@@ -34,19 +34,37 @@
     <script src="../Scripts/Nav.js"></script>
 
     <div id="first">
-        <!--Ajax Modal -->
-        <div class="modal fade" id="Ajaxloading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop='static'>
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <img src="../bootstrap3-editable/img/loading.gif" class="center-block" />
-                        <p class="text-center text-info">数据加载中......</p>
+        <div class="container">
+            <!--Ajax Modal -->
+            <div class="modal fade" id="Ajaxloading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop='static'>
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <img src="../bootstrap3-editable/img/loading.gif" class="center-block" />
+                            <p class="text-center text-info">数据加载中......</p>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- delete Modal -->
+            <div class="modal fade" tabindex="-1" role="dialog" id="DeleteModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color:#7ecccc">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">删除</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" name="AreaSID"/>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="button" class="btn btn-primary">确认删除</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div> <!-- /.modal -->
         </div>
-        <!-- Modal -->
-
 
         <div class="container" style="padding-top:50px;">
             <button type="button" class="btn btn-danger" id="AddProvince" data-type="text" data-pk="1" data-url="../ashx/Province/AddProvince.ashx" data-title="输入省一级名字">增加省一级行政单位</button>
@@ -67,8 +85,9 @@
     <script src="../Scripts/MustacheRenderTree.js"></script>
     <script src="//at.alicdn.com/t/font_s6xpn5xgs124kj4i.js"></script>
     <script src="../bootstrap3-editable/js/bootstrap-editable.min.js"></script>
-    <script type="text/javascript">
+    <script src="../Scripts/bootstrap-confirmation.min.js"></script>
 
+    <script type="text/javascript">
         $(document).on('click', '.tree ul li> span', function (e) {
             var d = $(this).siblings('ul').is(":visible");
             $(this).siblings('ul').slideToggle('fast');//.siblings('dt').css('background-position','right -40px');
@@ -83,67 +102,112 @@
         });
     </script>
     <script type="text/javascript">
+        var delflag = false;
         $.fn.editable.defaults.mode = 'popup';
         $(document).ready(function () {
             $('#AddProvince').editable({
                 display: false,
                 success: function () {
-                    $.ajax({
-                        type: "POST",
-                        url: "../ashx/GetTreeProvince.ashx",
-                        data: "name=John&location=Boston",
-                        beforeSend: function () {
-                            ShowDiv();
-                        },
-                        complete: function () {
-                            HiddenDiv();
-                        },
-
-                        success: function (msg) {
-                            data1 = JSON.parse(msg);//将json数据转对象
-                            var res = [];
-                            res.push(data2Html(data1));
-                            $(".tree").html(res);
-                        }
-                    });
+                    showTree();
                 }
             });
+            //--------------------------对县级操作
             $('.tree ').editable({
                 selector: '.AddAreas',
-                url: '/post',
-                pk: 1
+                display: false,
+                url: '../ashx/Areas/AddAreas.ashx',
+                success: function () {
+                    showTree();
+                }
             });
-            $('.tree ').editable({
-                selector: '.AddMsite',
-                url: '/post',
-                pk: 1
-            });
-        });
-        showTree();
-        function showTree() {
-            $(function ($) {
+            $("#DeleteModal .modal-footer .btn-primary").on("click", function () {
                 $.ajax({
                     type: "POST",
-                    url: "../ashx/GetTreeProvince.ashx",
-                    data: "name=John&location=Boston",
-                    beforeSend: function () {
-                        ShowDiv();
-                    },
-                    complete: function () {
-                        HiddenDiv();
-                    },
-
+                    url: "../ashx/Areas/DeleteAreas.ashx",
+                    data: "AreaSID=" +$("#DeleteModal input[name='AreaSID']").val(),
                     success: function (msg) {
-                        data1 = JSON.parse(msg);//将json数据转对象
-                        var res = [];
-                        res.push(data2Html(data1));
-                        $(".tree").html(res);
+                        if (msg == 400)
+                        {
+                            alert("删除失败，下面有测站信息");
+                            return;
+                        }
+                        delflag = true;
+                        $('#DeleteModal').modal('hide')
+                        
                     }
                 });
+                
+            });
+            $('#DeleteModal').on('hidden.bs.modal', function (e) {
+                if (delflag)
+                {
+                    delflag = false;
+                    showTree();
+                }
+                
+            })
+            //----------------------对测站操作  1、添加测站
+            $('.tree ').editable({
+                selector: '.AddMsite',
+                display: false,
+                success: function (msg) {
+                    if (msg == 200)
+                    { showTree(); }
+                    else {
+                        alert("添加测站有误！");
+                    }
+                   
+                }
             });
 
+        });
+        //------------------------测试confirmation-删除--------------------------------
+        $(function () {
+            $('.tree').confirmation({
+                selector: '.DeleteProince',
+                onConfirm: function () {
+                    $.ajax({
+                        type: "POST",
+                        url: "../ashx/Province/DeleteProince.ashx",
+                        data: "ProvinceID=" + this.content,
+                        success: function (msg) {
+                            alert("Data Saved: " + msg);
+                            showTree();
+                        }
+                    });
+
+                },
+                onCancel: function () { alert('cancel') }
+            });
+
+        });
+        //------------------------测试confirmation---------------------------------
+        showTree();
+        //展示省、县、测站树
+        function showTree() {
+
+            $.ajax({
+                type: "POST",
+                url: "../ashx/GetTreeProvince.ashx",
+                data: "name=John&location=Boston",
+                beforeSend: function () {
+                    ShowDiv();
+                },
+                complete: function () {
+                    HiddenDiv();
+                },
+
+                success: function (msg) {
+                    data1 = JSON.parse(msg);//将json数据转对象
+                    var res = [];
+                    res.push(data2Html(data1));
+                    $(".tree").html(res);
+                }
+            });
+
+
         }
-       
+
         //显示加载数据
         function ShowDiv() {
             $("#Ajaxloading").modal('show')
@@ -158,23 +222,27 @@
             $('#AddProvince').editable({
                 display: false
             });
-            
+
 
         });
-        function DeleteProince(e) {
-            alert(e);
-        }
-        function DeleteAreas(e) {
-            alert(e);
+        //function DeleteProince(e) {
+        //    alert(e);
+        //}
+        function DeleteAreas(AreaSID, AreasName) {
+            $("#DeleteModal .modal-header h4").html("删除" + AreasName);
+            $("#DeleteModal input[name='AreaSID']").val(AreaSID);
+            $("#DeleteModal").modal('show');
+
+            //alert(e);
         }
         function DeleteMsite(e) {
             alert(e)
         }
-        function AddAreas(e) {
-            alert($(this));
-            alert(e);
+        //function AddAreas(e) {
+        //    alert($(this));
+        //    alert(e);
 
-        }
+        //}
 
     </script>
 
